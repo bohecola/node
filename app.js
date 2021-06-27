@@ -4,7 +4,7 @@ const express = require('express');
 
 const app = express();
 
-app.use((req, res, next) => {
+app.use((req, res, next) => {   // 请求处理器函数
   console.log('在中间件中...');
   next();
 });
