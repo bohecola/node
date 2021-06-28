@@ -1,18 +1,14 @@
-const http = require('http');
-
 const express = require('express');
+const bodyParser = require('body-parser');
 
 const app = express();
 
-app.use((req, res, next) => {   // 请求处理器函数
-  console.log('在中间件中...');
-  next();
-});
+const adminRoutes = require('./routes/admin');
+const shopRoutes = require('./routes/shop');
 
-app.use((req, res, next) => {
-  console.log('在另外的一个中间件中...');
-});
+app.use(bodyParser.urlencoded({extended: false}));
 
-const server = http.createServer(app);
+app.use(adminRoutes);
+app.use(shopRoutes);
 
-server.listen(3000);
+app.listen(3000)
