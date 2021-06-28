@@ -1,0 +1,34 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title #{pageTitle}
+    link(rel="stylesheet", href="/css/index.css")
+    link(rel="stylesheet", href="/css/product.css")
+  body
+    header.shop-header
+      nav.shop-nav
+        ul.shop-list
+          li.shop-list-item
+            a.active(href="/") 商店
+          li.shop-list-item
+            a(href="/admin/add-product") 添加产品
+
+    main
+      if prods.length > 0
+        div.grid
+          each product in prods
+            article.card.product-item
+              header.card-header
+                h1.product-title #{product.title}
+              div.card-image
+                img(src="https://img2.baidu.com/it/u=2422281266,2915163850&fm=224&fmt=auto&gp=0.jpg", alt="一件衣服")
+              div.card-content
+                h2.product-price ￥59.9
+                p.product-description 一件网上款式非常流行，穿起来也很舒服的衣服
+              .card-actions 
+                button.btn 添加到购物车
+      else 
+        h1 没有任何产品

@@ -1,14 +1,25 @@
+const path = require('path')
+
 const express = require('express');
 const bodyParser = require('body-parser');
 
 const app = express();
 
-const adminRoutes = require('./routes/admin');
+app.set('view engine', 'pug');
+app.set('views', 'views'); // 不设置默认值是 process.cwd() + 'views' 当前文件夹下的views
+
+const adminData = require('./routes/admin');
 const shopRoutes = require('./routes/shop');
 
 app.use(bodyParser.urlencoded({extended: false}));
+app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(adminRoutes);
+app.use('/admin', adminData.routes);
 app.use(shopRoutes);
 
-app.listen(3000)
+app.use((req, res, next) => {
+  // res.status(404).sendFile(path.join(__dirname, 'views', '404.html'));
+  res.status(404).render('404', {pageTitle: '页面走丢了'});
+});
+
+app.listen(3000);
