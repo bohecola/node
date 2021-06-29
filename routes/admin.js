@@ -11,7 +11,13 @@ const products = [];
 // /admin/add-product
 router.get('/add-product',(req, res, next) => {   // 请求处理器函数
   // res.sendFile(path.join(rootDir, 'views', 'add-product.html'));
-  res.render('add-product', {pageTitle: '添加产品', path: '/admin/add-product'}) // 渲染视图文件
+  res.render('add-product', {
+    pageTitle: '添加产品',
+    path: '/admin/add-product',
+    productCSS: true,
+    // layout: false // 不使用app.js中expressHbs()指定的默认layout
+    isAddProductActive: true
+  }) // 渲染视图文件
 });
 
 // /admin/product
