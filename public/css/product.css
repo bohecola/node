@@ -52,6 +52,10 @@ main {
   margin: auto;
 }
 
+.product-form button {
+  font-size: 14px;
+}
+
 .product-item {
   width: 20rem;
   max-width: 95%;

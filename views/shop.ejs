@@ -1,0 +1,31 @@
+<%- include('includes/head.ejs') %>
+  <link rel="stylesheet" href="/css/product.css">
+</head>
+<body>
+  <%- include('includes/navigation.ejs') %>
+  <main>
+    <% if (prods.length > 0) { %>
+      <div class="grid">
+        <% for (let product of prods) { %>
+          <article class="card product-item">
+            <header class="card-header">
+              <h1 class="product-title"><%= product.title %></h1>
+            </header>
+            <div class="card-image">
+              <img src="https://img2.baidu.com/it/u=2422281266,2915163850&fm=224&fmt=auto&gp=0.jpg" alt="一件衣服">
+            </div>
+            <div class="card-content">
+              <h2 class="product-price">￥59.9</h2>
+              <p class="product-description">一件网上款式非常流行，穿起来也很舒服的衣服</p>
+            </div>
+            <div class="card-actions">
+              <button class="btn">添加到购物车</button>
+            </div>
+          </article>
+        <% } %>
+      </div>
+    <% } else { %>
+      <h1>没有更多的产品了...</h1>
+    <% } %>
+  </main>
+<%- include('includes/end.ejs') %>
