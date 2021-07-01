@@ -13,14 +13,16 @@ a {
 }
 
 .shop-header {
+  display: flex;
   width: 100%;
   height: 3.5rem;
   background-color: #e1251b;
   padding: 0 1.5rem;
+  align-items: center;
 }
 
 .shop-header .shop-nav {
-  display: flex;
+  display: none;
   height: 100%;
   align-items: center;
 }
@@ -40,6 +42,66 @@ a {
 .shop-header .shop-list .shop-list-item a:hover,
 .shop-header .shop-list .shop-list-item a.active {
   color: #333;
+}
+
+.mobile-nav {
+  width: 15rem;
+  height: 100vh;
+  max-width: 90%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background-color: #fff;
+  z-index: 10;
+  padding: 2rem 1rem 1rem 2rem;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-out;
+}
+
+.mobile-nav.open {
+  transform: translateX(0);
+}
+
+.mobile-nav-item {
+  margin: 1rem;
+  /* padding: 0; */
+}
+
+.mobile-nav-item a {
+  color: #000;
+  font-size: 1.5rem;
+  padding: .5rem 2rem;
+}
+
+.mobile-nav-item a:hover,
+.mobile-nav-item a:active {
+  color: #fff;
+  background-color: #e1251b;
+}
+
+#side-menu-toggle {
+  display: block;
+  padding: .5rem;
+  border: 1px solid #fff;
+  background-color: transparent;
+  color: #fff;
+  cursor: pointer;
+}
+
+#side-menu-toggle:hover {
+  color: #333;
+  border-color: #333;
+}
+
+.mask {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 5;
 }
 
 main {
@@ -100,4 +162,14 @@ main {
 .btn:hover {
   background-color: #e1251b;
   color: #fff;
+}
+
+@media (min-width: 768px) {
+  .shop-header .shop-nav {
+    display: flex;
+  }
+
+  #side-menu-toggle {
+    display: none;
+  }
 }

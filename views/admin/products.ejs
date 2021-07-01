@@ -12,14 +12,17 @@
               <h1 class="product-title"><%= product.title %></h1>
             </header>
             <div class="card-image">
-              <img src="https://img2.baidu.com/it/u=2422281266,2915163850&fm=224&fmt=auto&gp=0.jpg" alt="一件衣服">
+              <img src="<%= product.imageUrl %>" alt="<%= product.title %>">
             </div>
             <div class="card-content">
-              <h2 class="product-price">￥59.9</h2>
-              <p class="product-description">一件网上款式非常流行，穿起来也很舒服的衣服</p>
+              <h2 class="product-price"><%= product.price %></h2>
+              <p class="product-description"><%= product.description %></p>
             </div>
             <div class="card-actions">
-              <button class="btn">添加到购物车</button>
+              <a href="/admin/edit-product" class="btn">編輯</a>
+              <form action="/admin/delete-product" method="POST">
+                <button class="btn" type="submit">刪除</button>
+              </form>
             </div>
           </article>
         <% } %>
