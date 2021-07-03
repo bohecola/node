@@ -22,6 +22,9 @@
         <label for="description">描述</label>
         <textarea name="description" id="description" rows="5"><% if (editing) { %><%= product.description %><% } %></textarea>
       </div>
+      <% if (editing) { %>
+        <input type="hidden" name="productId" value="<%= product.id %>">
+      <% } %>
       <button type="submit"><% if (editing) { %>编辑产品<% } else {%>添加产品<% } %></button>
     </form>
   </main>
