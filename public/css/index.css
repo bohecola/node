@@ -12,6 +12,19 @@ a {
   text-decoration: none;
 }
 
+button {
+  outline: none;
+  border: none;
+}
+
+form {
+  display: inline;
+}
+
+.centered {
+  text-align: center;
+}
+
 .shop-header {
   display: flex;
   width: 100%;
@@ -150,10 +163,12 @@ main {
 }
 
 .btn {
-  height: 35px;
+  display: inline-block;
+  padding: 0.25rem 1rem;
   font-size: 16px;
   color: #e1251b;
   background-color: #fff;
+  font-family: sans-serif;
   border-radius: 5px;
   border: 1px solid #e1251b;
   cursor: pointer;

@@ -19,7 +19,8 @@
               <p class="product-description"><%= product.description %></p>
             </div>
             <div class="card-actions">
-              <button class="btn">添加到购物车</button>
+              <a href="/products/<%= product.id %>" class="btn">查看详情</a>
+              <%- include('../includes/add-to-cart.ejs', {product: product}) %>
             </div>
           </article>
         <% } %>
