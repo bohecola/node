@@ -25,6 +25,14 @@ form {
   text-align: center;
 }
 
+.centered .img {
+  height: 15rem;
+}
+
+.centered .img img {
+  height: 100%;
+}
+
 .shop-header {
   display: flex;
   width: 100%;
