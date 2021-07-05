@@ -16,6 +16,12 @@
         </li>
       <% }) %>
     </ul>
+    <hr>
+    <div class="centered">
+      <form action="/create-order" method="POST">
+        <button type="submit" class="btn">结算</button>
+      </form>
+    </div>
   <% } else { %>
     <h1>购物车里暂无宝贝哦！</h1>
   <% } %>
