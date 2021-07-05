@@ -10,11 +10,12 @@ exports.getAddProduct = (req, res, next) => {   // 请求处理器函数
 
 exports.postAddProduct = (req, res) => {
   const { title, imageUrl, price, description } = req.body;
-  Product.create({
+  req.user.createProduct({
     title: title,
     price: price,
     imageUrl: imageUrl,
-    description: description
+    description: description,
+    userId: req.user.id
   })
   .then(result => {
     // console.log(result);
@@ -30,7 +31,8 @@ exports.getEditProduct = (req, res, next) => {
     return res.redirect('/');
   }
   const prodId = req.params.productId;
-  Product.findByPk(prodId).then(product => {
+  req.user.getProducts({ where: {id: prodId} }).then(products => {
+    const product = products[0];
     if (!product) {
       return res.redirect('/')
     }
@@ -41,6 +43,18 @@ exports.getEditProduct = (req, res, next) => {
       product: product
     });
   }).catch(err => console.log(err));
+
+  // Product.findByPk(prodId).then(product => {
+  //   if (!product) {
+  //     return res.redirect('/')
+  //   }
+  //   res.render('admin/edit-product', { // 渲染视图文件
+  //     pageTitle: '添加产品',
+  //     path: '/admin/edit-product',
+  //     editing: editMode,
+  //     product: product
+  //   });
+  // }).catch(err => console.log(err));
 }
 
 exports.postEditProduct = (req, res, next) => {
@@ -64,13 +78,14 @@ exports.postEditProduct = (req, res, next) => {
 }; 
 
 exports.getProducts = (req, res, next) => {
-  Product.findAll().then(products => {
-    res.render('admin/products', {
-      prods: products,
-      pageTitle: '管理商品',
-      path: '/admin/products'
-    })
-  }).catch(err => console.log(err))
+  req.user.getProducts()
+    .then(products => {
+      res.render('admin/products', {
+        prods: products,
+        pageTitle: '管理商品',
+        path: '/admin/products'
+      })
+    }).catch(err => console.log(err))
 };
 
 exports.postDeleteProduct = (req, res, next) => {
