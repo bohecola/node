@@ -11,7 +11,7 @@ exports.getAddProduct = (req, res, next) => {   // 请求处理器函数
 
 exports.postAddProduct = (req, res) => {
   const { title, imageUrl, price, description } = req.body;
-  const product = new Product(title, price, description, imageUrl);
+  const product = new Product(title, price, description, imageUrl, null, req.user._id);
   product.save().then(result => {
     console.log('产品添加成功！');
     res.redirect('/admin/products');

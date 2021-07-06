@@ -5,8 +5,8 @@ let _db; // 保存数据库的访问
 
 const mongoConnect = (callback) => {
   MongoClient.connect(
-    "mongodb+srv://bohecola:7BUpdMKXgOF0JFjz@cluster0.3spr3.mongodb.net/shop?retryWrites=true&w=majority",
-    { useNewUrlParser: true, useUnifiedTopology: true }
+    "mongodb+srv://bohecola:B6uTxplvF06XwL1h@cluster0.3spr3.mongodb.net/shop?retryWrites=true&w=majority",
+    { useNewUrlParser: true }
   )
     .then(client => {
       console.log('连接数据库成功！');
