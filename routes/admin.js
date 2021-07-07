@@ -4,13 +4,13 @@ const adminController = require('../controllers/admin');
 
 const router = express.Router();
 
-// /admin/add-product
+// // /admin/add-product
 router.get('/add-product', adminController.getAddProduct);
 
-// /admin/products
+// // /admin/products
 router.get('/products', adminController.getProducts);
 
-// /admin/product
+// // /admin/product
 router.post('/add-product', adminController.postAddProduct);
 
 router.get('/edit-product/:productId', adminController.getEditProduct);
